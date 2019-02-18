@@ -4,10 +4,13 @@ jobs:
     working_directory: ~/apt_test
     docker:
       - image: ubuntu:xenial
+    environment:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
     steps:
       - checkout
 
-      - run: apt-get update && apt-get install -y apt-utils build-essential python3-pip
+      - run: apt-get update && apt-get install -y apt-utils build-essential python3-pip git
       - run: python3 -m pip install pip --upgrade
       - run: python3 -m pip install wheel pipenv
 
