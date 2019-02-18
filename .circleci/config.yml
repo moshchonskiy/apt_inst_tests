@@ -15,9 +15,11 @@ jobs:
       - run: python3 -m pip install wheel pipenv
 
       # Execute tests
+      - run: mkdir -p /logs
+      - run: mkdir -p /test-results
       - run: pipenv install && pipenv run python -m pytest -vvv -s tests/test_apt_install.py
 
-      # Upload results
+      # Upload results and logs
       - store_test_results:
           path: ./test-results
       - store_artifacts:

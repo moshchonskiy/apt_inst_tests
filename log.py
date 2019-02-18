@@ -12,7 +12,7 @@ def generate_time():
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s %(filename)s:'
                     '%(lineno)d -- %(message)s',
-                    filename=os.path.join(LOGS_DIR, 'sys_test_{}.log'.format(generate_time())),
+                    filename=os.path.join(LOGS_DIR, 'test_{}.log'.format(generate_time())),
                     filemode='w')
 
 console = logging.StreamHandler()
