@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/apt_test
+    docker:
+      - image: ubuntu:xenial
+    steps:
+      - checkout
+
+      - run: apt-get update && apt-get install -y apt-utils build-essential python3-pip
+      - run: python3 -m pip install pip --upgrade
+      - run: python3 -m pip install wheel pipenv
+
+      # Execute tests
+      - run: ./test.sh
+
+      # Upload results
+      - store_test_results:
+          path: ./test-results
+      - store_artifacts:
+          path: ./test-results
