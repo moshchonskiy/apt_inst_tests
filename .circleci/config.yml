@@ -17,10 +17,13 @@ jobs:
       # Execute tests
       - run: mkdir -p logs
       - run: mkdir -p test-results
-      - run: pipenv install && pipenv run python -m pytest -vvv -s tests/test_apt_install.py
+      - run: pipenv install
+      - run: pipenv run python -m pytest -vvv -s --junit-xml=./test-results tests/test_apt_install.py
 
       # Upload results and logs
       - store_test_results:
           path: ./test-results
+      - store_artifacts:
+          path: ./logs
       - store_artifacts:
           path: ./test-results

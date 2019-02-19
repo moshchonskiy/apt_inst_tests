@@ -1,8 +1,6 @@
 import pytest
 import testinfra
 
-from log import logger
-
 
 class TestAptGetInstall:
 
@@ -38,4 +36,3 @@ class TestAptGetInstall:
         pkg_version = "{}={}".format(pkg_name, version)
         _, error = shell_executor.apt_install_pkg(pkg_version)
         assert error, "should return an error: Version '{}' for '{}' was not found".format(version, pkg_name)
-
